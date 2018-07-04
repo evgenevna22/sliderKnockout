@@ -20,21 +20,20 @@ var gulp = require('gulp'),
 
 gulp.task('common-js', function () {
     return gulp.src([
-        'app/js/common.js'
+        'app/js/scripts.js'
     ])
-        .pipe(concat('common.min.js'))
-        .pipe(uglify())
+        .pipe(concat('scripts.min.js'))
+        // .pipe(uglify())
         .pipe(gulp.dest('app/js'));
 });
 
 gulp.task('js', ['common-js'], function () {
     return gulp.src([
-        'app/libs/jquery/dist/jquery.min.js',
-        'app/libs/jquery-validation/dist/jquery.validate.min.js',
-        'app/js/common.min.js'
+        'app/js/scripts.js',
+        'app/libs/knockout/build/output/knockout-latest.js'
     ])
         .pipe(concat('scripts.min.js'))
-        .pipe(uglify())
+        // .pipe(uglify())
         .pipe(gulp.dest('app/js'))
         .pipe(browserSync.reload({stream: true}));
 });
@@ -66,7 +65,7 @@ gulp.task('html', function() {
 
 gulp.task('watch', ['sass', 'js', 'browser-sync'], function () {
     gulp.watch('app/sass/**/*.scss', ['sass']);
-    gulp.watch(['libs/**/*.js', 'app/js/common.js'], ['js']);
+    gulp.watch(['libs/**/*.js', 'app/js/scripts.js'], ['js']);
     gulp.watch('app/*.html', browserSync.reload);
 });
 

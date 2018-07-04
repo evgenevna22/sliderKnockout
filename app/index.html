@@ -27,51 +27,26 @@
 	<article class="gallery">
 		<section class="gallery__item-wrapper">
 			<figure class="gallery__item">
-				<img class="gallery__item-pic" src="./img/pic1.jpg" alt="alt="description for image 1"">
+				<img class="gallery__item-pic" data-bind="attr: { src: urlBig + curImg().nameImg }">
 				<div class="gallery__item-title">
-					<p>Very nice house №1</p>
+					<p></p>
 				</div>
 			</figure>
 		</section>
 		<section class="gallery__thumbnail">
 			<div class="gallery__thumbnail-counter">
-				<p><span>1</span>/<span>10</span></p>
+				<p><span data-bind="text: curIndex() + 1"></span>/<span data-bind="text: pics.length"></span></p>
 			</div>
 			<section class="gallery__thumbnail-wrapper">
-				<button class="gallery__thumbnail-btn gallery__thumbnail-btn--left gallery__thumbnail-btn--disabled">Влево</button>
-				<ul class="gallery__thumbnail-list">
-					<li class="gallery__thumbnail-item gallery__thumbnail-item--selected">
-						<img class="gallery__thumbnail-pic" src="./img/pic1.jpg"  alt="description for image 1">
-					</li>
-					<li class="gallery__thumbnail-item">
-						<img class="gallery__thumbnail-pic" src="./img/pic2.jpg"  alt="description for image 2">
-					</li>
-					<li class="gallery__thumbnail-item">
-						<img class="gallery__thumbnail-pic" src="./img/pic3.jpg"  alt="description for image 3">
-					</li>
-					<li class="gallery__thumbnail-item">
-						<img class="gallery__thumbnail-pic" src="./img/pic4.jpg" alt="description for image 4">
-					</li>
-					<li class="gallery__thumbnail-item">
-						<img class="gallery__thumbnail-pic" src="./img/pic5.jpg"  alt="description for image 5">
-					</li>
-					<li class="gallery__thumbnail-item">
-						<img class="gallery__thumbnail-pic" src="./img/pic6.jpg"  alt="description for image 6">
-					</li>
-					<li class="gallery__thumbnail-item">
-						<img class="gallery__thumbnail-pic" src="./img/pic7.jpg"  alt="description for image 7">
-					</li>
-					<li class="gallery__thumbnail-item">
-						<img class="gallery__thumbnail-pic" src="./img/pic8.jpg"  alt="description for image 8">
-					</li>
-					<li class="gallery__thumbnail-item">
-						<img width="100%" height="90" src="./img/pic9.jpg"  alt="description for image 9">
-					</li>
-					<li class="gallery__thumbnail-item">
-						<img width="100%" height="90" src="./img/pic10.jpg"  alt="description for image 10">
-					</li>
-				</ul>
-				<button class="gallery__thumbnail-btn gallery__thumbnail-btn--right">Вправо</button>
+				<button class="gallery__thumbnail-btn gallery__thumbnail-btn--left" id="arrow-left" data-bind="click: prevItem, disable: curIndex() === 0">Влево</button>
+				<div class="gallery__thumbnail-list">
+					<ul class="gallery__thumbnail-items" id="thumbnail-items" data-bind="foreach: pics">
+						<li class="gallery__thumbnail-item" data-bind="click: chooseItem, css: { selectedPic : $index() === curIndex() }">
+							<img class="gallery__thumbnail-pic" data-bind="attr: { src: urlMin + nameImg }">
+						</li>
+					</ul>
+				</div>
+				<button class="gallery__thumbnail-btn gallery__thumbnail-btn--right" id="arrow-right" data-bind="click: nextItem, disable: curIndex() === 9">Вправо</button>
 			</section>
 		</section>
 	</article>
@@ -79,6 +54,7 @@
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700">
 <link rel="stylesheet" href="css/main.min.css" type="text/css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
 <script src="js/scripts.min.js"></script>
 
 </body>
