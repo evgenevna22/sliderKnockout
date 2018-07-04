@@ -1,0 +1,18 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+.gallery {
+  width: 750px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+  background-color: #e2eef6;
+  border: 3px solid $border-color;
+}
+
+.gallery__thumbnail {
+  display: flex;
+  flex-direction: column;
+}
