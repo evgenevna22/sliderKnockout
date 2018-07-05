@@ -29,7 +29,7 @@
 			<figure class="gallery__item">
 				<img class="gallery__item-pic" data-bind="attr: { src: urlBig + curImg().nameImg }">
 				<div class="gallery__item-title">
-					<p></p>
+					<p data-bind="text: curImg().title"></p>
 				</div>
 			</figure>
 		</section>
@@ -40,8 +40,8 @@
 			<section class="gallery__thumbnail-wrapper">
 				<button class="gallery__thumbnail-btn gallery__thumbnail-btn--left" id="arrow-left" data-bind="click: prevItem, disable: curIndex() === 0">Влево</button>
 				<div class="gallery__thumbnail-list">
-					<ul class="gallery__thumbnail-items" id="thumbnail-items" data-bind="foreach: pics">
-						<li class="gallery__thumbnail-item" data-bind="click: chooseItem, css: { selectedPic : $index() === curIndex() }">
+					<ul class="gallery__thumbnail-items" id="thumbnail-items" data-bind="foreach: pics, style: { marginLeft : offset }">
+						<li class="gallery__thumbnail-item" data-bind="click: chooseItem.bind(this, $index(), $data), css: { selectedPic : $index() === curIndex() }">
 							<img class="gallery__thumbnail-pic" data-bind="attr: { src: urlMin + nameImg }">
 						</li>
 					</ul>

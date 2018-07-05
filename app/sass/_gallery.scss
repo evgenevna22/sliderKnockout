@@ -25,7 +25,9 @@
 }
 
 .gallery__thumbnail-wrapper {
+  position: relative;
   display: flex;
+  padding-right: 15px;
 }
 
 .gallery__thumbnail-btn {
@@ -51,6 +53,8 @@
     }
   }
   &--right {
+    position: absolute;
+    right: 0;
     &::before{
       right: 0;
       border-top: 3px solid $arrow-color;
@@ -110,8 +114,4 @@
 }
 .selectedPic {
   opacity: 1;
-}
-
-.gallery__thumbnail-pic {
-
 }

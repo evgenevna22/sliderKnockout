@@ -61,14 +61,18 @@ function viewModel() {
         self.curImg(self.pics[curIndex()]);
     };
 
-    self.chooseItem = function (data) {
+    self.chooseItem = function (index, data) {
+        self.curIndex(index);
         self.curImg(data);
     }
 
     self.nextItem = function (index) {
-        // debugger;
         self.curIndex(self.curIndex() + 1);
         self.curImg(self.pics[curIndex()]);
     };
+    self.offset = ko.computed(function () {
+       return -85 * curIndex() + "px";
+    });
+
 }
 ko.applyBindings(viewModel());

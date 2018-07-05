@@ -31,6 +31,7 @@
     "gulp-htmlmin": "^4.0.0"
   },
   "dependencies": {
+    "gulp-install": "^1.1.0",
     "knockout": "^3.4.2",
     "popper.js": "^1.12.5"
   }
